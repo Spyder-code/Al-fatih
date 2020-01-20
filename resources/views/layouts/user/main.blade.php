@@ -1,8 +1,9 @@
     <!doctype html>
     <html lang="en">
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <!-- Required meta tags -->
-        <meta charset="utf-8">
+        
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
@@ -16,7 +17,7 @@
 
         <div class="jumbotron jumbotron-fluid bg-primary">
                 <div class="container text-center">
-                    <img src="{{asset('assets/img/logo1.png')}}" width="500" height="250" class="rounded-circle">
+                    <img src="{{asset('assets/img/logo1.png')}}" width="320" height="250" class="rounded-circle">
                 <p  style="color:white;">Toko sepatu Al-fatih adalah toko sepatu online yang menjual
                     produk sepatu grosiran. Toko ini merupakan reseller
                     produk sepatu di Kota Mojokerto, Propinsi Jawa Timur.</p>
@@ -53,7 +54,7 @@
                                 </li>
                             </ul>
                             <form class="form-inline my-2 my-lg-0" method="get" action="{{ url('hasil-pencarian') }}">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Cari Berdasarkan (Merk, Warna, Kode barang)" name="cari" style="width:400px;">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Cari Berdasarkan (Merk, Warna, Kode barang)" name="cari" style="width:330px;">
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                             </form>
                             </div>
@@ -67,7 +68,7 @@
                             <div class="col-lg-6 col-xs-12 about-company">
                                 <h2>Produk Sepatu Mojokerto</h2>
                                 <p class="pr-5 text-white-50">Penjualan Produk Sepatu Grosiran maupun eceran. </p>
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d988.9383687307532!2d112.42210202913911!3d-7.49244847000745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7813086548b7a5%3A0x958432f3cc11b80f!2sToko%20sepatu%20Al%20fatih!5e0!3m2!1sen!2sid!4v1579158688351!5m2!1sen!2sid" width="400" height="200" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d988.9383687307532!2d112.42210202913911!3d-7.49244847000745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7813086548b7a5%3A0x958432f3cc11b80f!2sToko%20sepatu%20Al%20fatih!5e0!3m2!1sen!2sid!4v1579158688351!5m2!1sen!2sid"  frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                             </div>
                             <div class="col-lg-6 col-xs-12 location">
                                 <h2 class="mt-lg-0 mt-5">Location</h2>

@@ -51,7 +51,7 @@ class HomeController extends Controller
         ]);
 
         if ($files = $request->file('image')) {
-            $lokasi = public_path('assets/img');
+            $lokasi = 'assets/img';
             $profil = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($lokasi, $profil);
             $insert['image'] = "$profil";

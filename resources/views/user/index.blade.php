@@ -41,7 +41,7 @@
                                         @endif
                                     </ul>
                                     <a href="belanja/{{$pro->id}}" class="btn btn-primary">Beli</a>
-                                    <a href="https://wa.me/6285731240971?text=Saya%20mau%20pesan%20sepatu%20{{$pro->nama}}%20https://www.sepatualfatih.online/assets/img/{{$pro->image}}" class="btn btn-success d-inline">WhatsApp</a>
+                                    <a href="https://wa.me/6285731240971?text=Saya%20mau%20pesan%20sepatu%20{{$pro->nama}}%20http://www.sepatualfatih.online/assets/img/{{$pro->image}}" class="btn btn-success d-inline">WhatsApp</a>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                                         <li class="list-group-item mb-3"><b>Rp. {{ number_format($pro->harga_kodi,2) }} /Kodi</b></li>
                                     </ul>
                                     <a href="belanja/{{$pro->id}}" class="btn btn-primary">Beli</a>
-                                <a href="https://wa.me/6285731240971?text=Saya%20mau%20pesan%20sepatu%20{{$pro->nama}}%20https://www.sepatualfatih.online/assets/img/{{$pro->image}}" class="btn btn-success d-inline">WhatsApp</a>
+                                <a href="https://wa.me/6285731240971?text=Saya%20mau%20pesan%20sepatu%20{{$pro->nama}}%20http://www.sepatualfatih.online/assets/img/{{$pro->image}}" class="btn btn-success d-inline">WhatsApp</a>
                                 </div>
                             </div>
                         </div>
