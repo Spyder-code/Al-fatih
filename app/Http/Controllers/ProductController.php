@@ -22,7 +22,8 @@ class ProductController extends Controller
     public function pria()
     {
         $search = 'pria';
-        $tas = Product::where('kategori', 'LIKE', "%{$search}%")
+        $tas = Product::orderByRaw('updated_at DESC')
+            ->where('kategori', 'LIKE', "%{$search}%")
             ->paginate(8);
 
         return view('user.produk', compact('tas'));
@@ -31,7 +32,8 @@ class ProductController extends Controller
     public function wanita()
     {
         $search = 'wanita';
-        $tas = Product::where('kategori', 'LIKE', "%{$search}%")
+        $tas = Product::orderByRaw('updated_at DESC')
+            ->where('kategori', 'LIKE', "%{$search}%")
             ->paginate(8);
 
         return view('user.produk', compact('tas'));
@@ -40,17 +42,79 @@ class ProductController extends Controller
     public function anak()
     {
         $search = 'anak-anak';
-        $tas = Product::where('kategori', 'LIKE', "%{$search}%")
+        $tas = Product::orderByRaw('updated_at DESC')
+            ->where('kategori', 'LIKE', "%{$search}%")
             ->paginate(8);
 
         return view('user.produk', compact('tas'));
     }
 
-    public function zipper()
+    public function mitasi()
     {
-        $search = 'tas ziper';
-        $tas = Product::where('nama', 'LIKE', "%{$search}%")
-            ->get();
+        $search = 'Mitasi';
+        $tas = Product::orderByRaw('updated_at DESC')
+            ->where('bahan', 'LIKE', "%{$search}%")
+            ->paginate(8);
+
+        return view('user.produk', compact('tas'));
+    }
+
+    public function kulit()
+    {
+        $search = 'Kulit';
+        $tas = Product::orderByRaw('updated_at DESC')
+            ->where('bahan', 'LIKE', "%{$search}%")
+            ->paginate(8);
+
+        return view('user.produk', compact('tas'));
+    }
+
+    public function pvc()
+    {
+        $search = 'PVC';
+        $tas = Product::orderByRaw('updated_at DESC')
+            ->where('sol', 'LIKE', "%{$search}%")
+            ->paginate(8);
+
+        return view('user.produk', compact('tas'));
+    }
+
+    public function smile()
+    {
+        $search = 'Smile';
+        $tas = Product::orderByRaw('updated_at DESC')
+            ->where('sol', 'LIKE', "%{$search}%")
+            ->paginate(8);
+
+        return view('user.produk', compact('tas'));
+    }
+
+    public function tpr()
+    {
+        $search = 'TPR';
+        $tas = Product::orderByRaw('updated_at DESC')
+            ->where('sol', 'LIKE', "%{$search}%")
+            ->paginate(8);
+
+        return view('user.produk', compact('tas'));
+    }
+
+    public function matis()
+    {
+        $search = 'Matis';
+        $tas = Product::orderByRaw('updated_at DESC')
+            ->where('sol', 'LIKE', "%{$search}%")
+            ->paginate(8);
+
+        return view('user.produk', compact('tas'));
+    }
+
+    public function wadges()
+    {
+        $search = 'Wadges';
+        $tas = Product::orderByRaw('updated_at DESC')
+            ->where('sol', 'LIKE', "%{$search}%")
+            ->paginate(8);
 
         return view('user.produk', compact('tas'));
     }
@@ -58,7 +122,8 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $search = $request->cari;
-        $tas = Product::where('nama', 'like', "%" . $search . "%")
+        $tas = Product::orderByRaw('updated_at DESC')
+            ->where('nama', 'like', "%" . $search . "%")
             ->orWhere('merk', 'like', "%" . $search . "%")
             ->orWhere('deskripsi', 'like', "%" . $search . "%")
             ->paginate(8);

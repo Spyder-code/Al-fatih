@@ -27,12 +27,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $product = DB::table('products')->paginate(10);
+        $product = Product::orderByRaw('updated_at DESC')
+            ->paginate(5);
         return view('admin.home', compact('product'));
     }
     public function customer()
     {
-        $product = Help::paginate(10);
+        $product = Help::orderByRaw('updated_at DESC')
+            ->paginate(10);
         return view('admin.customer', compact('product'));
     }
     public function destroy(Product $product)
@@ -58,6 +60,8 @@ class HomeController extends Controller
 
             $data = new Product;
             $data->nama = $request->nama;
+            $data->sol = $request->sol;
+            $data->bahan = $request->bahan;
             $data->harga_satuan = $request->hargaPasang;
             $data->harga_kodi = $request->hargaKodi;
             $data->harga_lusin = $request->hargaLusin;
@@ -85,6 +89,8 @@ class HomeController extends Controller
             ->update([
                 'nama' => $request->nama,
                 'harga_satuan' => $request->hargaPasang,
+                'bahan' => $request->bahan,
+                'sol' => $request->sol,
                 'harga_kodi' => $request->hargaKodi,
                 'merk' => $request->merk,
                 'kategori' => $request->kategori,
@@ -101,10 +107,74 @@ class HomeController extends Controller
         $barang = DB::table('trans')
             ->join('products', 'products.id',  '=',  'trans.produk_id')
             ->select('trans.*', 'products.nama as bar', 'products.image')
+            ->orderByRaw('updated_at DESC')
             ->paginate(10);
         return view('admin.transaksi', [
             'tran' => $tran,
             'barang' => $barang
+        ]);
+    }
+
+    public function cari(Request $request)
+    {
+        $search = $request->cari;
+        $product = Product::orderByRaw('updated_at DESC')
+            ->where('nama', 'like', "%" . $search . "%")
+            ->orWhere('merk', 'like', "%" . $search . "%")
+            ->orWhere('deskripsi', 'like', "%" . $search . "%")
+            ->paginate(5);
+
+        return view('admin.cari', compact('product'));
+    }
+
+    public function detail(Product $product)
+    {
+        $barang = DB::table('products')
+            ->where('id', '=', $product->id)
+            ->get();
+        return view('admin.detail', [
+            'product' => $barang
+        ]);
+    }
+
+    public function laporan()
+    {
+        $awal = Product::count();
+        $product = $awal / 320 * 100;
+        $trans = Tran::count();
+        $help = Help::count();
+        $jan = DB::table('access_logs')->whereMonth('created_at', '=', 1)->count();
+        $feb = DB::table('access_logs')->whereMonth('created_at', '=', 2)->count();
+        $mar = DB::table('access_logs')->whereMonth('created_at', '=', 3)->count();
+        $apr = DB::table('access_logs')->whereMonth('created_at', '=', 4)->count();
+        $mei = DB::table('access_logs')->whereMonth('created_at', '=', 5)->count();
+        $jun = DB::table('access_logs')->whereMonth('created_at', '=', 6)->count();
+        $jul = DB::table('access_logs')->whereMonth('created_at', '=', 7)->count();
+        $aug = DB::table('access_logs')->whereMonth('created_at', '=', 8)->count();
+        $sep = DB::table('access_logs')->whereMonth('created_at', '=', 9)->count();
+        $okt = DB::table('access_logs')->whereMonth('created_at', '=', 10)->count();
+        $nov = DB::table('access_logs')->whereMonth('created_at', '=', 11)->count();
+        $des = DB::table('access_logs')->whereMonth('created_at', '=', 12)->count();
+        $total = DB::table('access_logs')->where('path', '=', '/')->count();
+
+        return view('admin.laporan', [
+            'jan' => $jan,
+            'feb' => $feb,
+            'mar' => $mar,
+            'apr' => $apr,
+            'mei' => $mei,
+            'jun' => $jun,
+            'jul' => $jul,
+            'aug' => $aug,
+            'sep' => $sep,
+            'okt' => $okt,
+            'nov' => $nov,
+            'des' => $des,
+            'total' => $total,
+            'product' => $product,
+            'tran' => $trans,
+            'sepatu' => $awal,
+            'help' => $help
         ]);
     }
 

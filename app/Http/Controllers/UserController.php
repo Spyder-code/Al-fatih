@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Help;
+use DB;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,9 +14,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $product = Product::paginate(8);
+        $product = Product::orderByRaw('updated_at DESC')
+            ->paginate(8);
         return view('user.index', compact('product'));
     }
 

@@ -47,6 +47,29 @@
         </div>
 
         <div class="form-group row">
+            <label for="name" class="col-4 col-form-label text-md-right ml-2">Bahan</label>
+            <div class="col mr-2">
+                <select class="form-control" name="bahan">
+                    <option value="Kulit">Kulit</option>
+                    <option value="Mitasi">Mitasi</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="name" class="col-4 col-form-label text-md-right ml-2">Sol</label>
+            <div class="col mr-2">
+                <select class="form-control" name="sol">
+                    <option value="PVC">PVC</option>
+                    <option value="Smile (Balet)">Smile</option>
+                    <option selected value="TPR">TPR</option>
+                    <option value="Matis">Matis</option>
+                    <option value="Wadges">Wadges</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
             <label for="name" class="col-4 col-form-label text-md-right ml-2">Kategori</label>
             <div class="col mr-2">
                 <select class="form-control" name="kategori" value="{{$product->kategori}}">

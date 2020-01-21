@@ -8,10 +8,45 @@
             </div>
             @endif
             <div class="container">
-                <div class="row text-center">
-                    <div class="col">
-                        <div class="alert alert-primary" >
-                            <h3>Temukan produk sepatu yang anda cari disini!</h3>
+                <div class="row">
+                    <div class="col col-sm-2">
+                        <h3 class=" border-right">Catalog</h3>
+                    </div>
+                    <div class="col col-sm-2">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sol
+                            </button>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ url('pvc/') }}">PVC</a>
+                            <a class="dropdown-item" href="{{ url('smile/') }}">Smile (Balet)</a>
+                            <a class="dropdown-item" href="{{ url('tpr/') }}">TPR</a>
+                            <a class="dropdown-item" href="{{ url('matis/') }}">Matis</a>
+                            <a class="dropdown-item" href="{{ url('wadges/') }}">Wadges</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm-2">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Bahan
+                            </button>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ url('kulit/') }}">Kulit</a>
+                            <a class="dropdown-item" href="{{ url('mitasi/') }}">Mitasi</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm-2">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Kategori
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ url('pria/') }}">Pria </a>
+                                <a class="dropdown-item" href="{{ url('wanita/') }}">Wanita</a>
+                                <a class="dropdown-item" href="{{ url('anak/') }}">Anak-anak</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -26,7 +61,19 @@
                         <div class="col col-lg-3">
                             <div class="card ml-2 mb-5 mr-2" >
                                 <div class="card-header float-right bg-primary" style="color:white">Upload on {{date("d, F Y",strtotime($pro->created_at))}}</div>
-                                <img src="assets/img/{{ $pro->image }}" class=" img-thumbnail" style="height:300px;">
+                                <img id="myImg" alt="{{$pro->nama}}" src="assets/img/{{ $pro->image }}" class=" img-thumbnail" style="height:300px;">
+                                <div id="myModal" class="modal">
+
+                                    <!-- The Close Button -->
+                                    <span class="close">&times;</span>
+
+                                    <!-- Modal Content (The Image) -->
+                                    <img class="modal-content" id="img01">
+
+                                    <!-- Modal Caption (Image Text) -->
+                                    <div id="caption"></div>
+                                </div>
+
                                 <div class="card-body">
                                     <h3 class="card-title text-center">{{$pro->merk}}</h3>
                                     <h4 class="card-title text-center">{{ $pro->nama }}</h4>
@@ -49,12 +96,25 @@
                         <div class="col col-lg-3">
                             <div class="card ml-2 mb-5 mr-2" >
                                 <div class="card-header float-right bg-primary" style="color:white">Upload on {{date("d, F y",strtotime($pro->created_at))}}</div>
-                                <img src="assets/img/{{ $pro->image }}" class=" img-thumbnail" style="height:300px;">
+                                <img id="myImg" alt="{{$pro->nama}}" src="assets/img/{{ $pro->image }}" class=" img-thumbnail" style="height:300px;">
+                                <div id="myModal" class="modal">
+
+                                    <!-- The Close Button -->
+                                    <span class="close">&times;</span>
+
+                                    <!-- Modal Content (The Image) -->
+                                    <img class="modal-content" id="img01">
+
+                                    <!-- Modal Caption (Image Text) -->
+                                    <div id="caption"></div>
+                                </div>
+
                                 <div class="card-body">
                                     <h3 class="card-title text-center">{{$pro->merk}}</h3>
                                     <h4 class="card-title text-center">{{ $pro->nama }}</h4>
                                     <p class="card-text text-center">({{ $pro->deskripsi }})</p>
                                     <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><b>Sol {{$pro->sol}}</b></li>
                                         <li class="list-group-item"><b>Ukuran {{ $pro->ukuran }}</b></li>
                                         <li class="list-group-item"><b>Rp. {{ number_format($pro->harga_satuan,2) }} /10 Pasang</b></li>
                                         <li class="list-group-item mb-3"><b>Rp. {{ number_format($pro->harga_kodi,2) }} /Kodi</b></li>

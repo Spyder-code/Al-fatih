@@ -24,6 +24,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('vendor/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{asset('assets/img/admin.png')}}">
 </head>
 <body class="bg-primary">
     <div id="app">
